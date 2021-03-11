@@ -49,7 +49,15 @@ const routes: Routes = [
   {
     path: 'historial-de-pagos',
     loadChildren: () => import('./pantallas/historial-de-pagos/historial-de-pagos.module').then( m => m.HistorialDePagosPageModule)
+  },
+  {
+    path: 'explore-container',
+    loadChildren: () => import('./explore-container/explore-container.module').then( m => m.ExploreContainerComponentModule)
+  },  {
+    path: 'recuperar-cuenta',
+    loadChildren: () => import('./pantallas/recuperar-cuenta/recuperar-cuenta.module').then( m => m.RecuperarCuentaPageModule)
   }
+
 ];
 @NgModule({
   imports: [
