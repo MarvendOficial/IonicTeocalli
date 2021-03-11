@@ -53,7 +53,11 @@ const routes: Routes = [
   {
     path: 'explore-container',
     loadChildren: () => import('./explore-container/explore-container.module').then( m => m.ExploreContainerComponentModule)
+  },  {
+    path: 'recuperar-cuenta',
+    loadChildren: () => import('./pantallas/recuperar-cuenta/recuperar-cuenta.module').then( m => m.RecuperarCuentaPageModule)
   }
+
 ];
 @NgModule({
   imports: [

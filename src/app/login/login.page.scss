@@ -11,12 +11,20 @@ ion-card {
 
 ion-input {
     border-bottom: 2px solid #FF4D00;
-    margin-top: 1em;
+    margin-top: .5em;
+    font-family: 'Segoe UI';
+    color: white;
+}
+
+h1 {
+    color: white;
     font-family: 'Segoe UI';
 }
 
 img {
     text-align: center;
+    padding: 0em;
+    margin: 0em;
 }
 
 a {
@@ -42,10 +50,10 @@ nav {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 0.75em;
   font-family: 'Segoe UI';
-  margin-top: 1em;
-
+  margin-top: 2em;
+  width: 70%;
 }
 
 /** orangeOutFull **/
@@ -62,29 +70,33 @@ nav {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 10px;
+  font-size: .60em;
   font-family: 'Segoe UI';
-  margin-top: 1em;
 }
+
 
 .center{
     display:block;
     margin-left: auto;
     margin-right: auto;
     float: none;
-    width: 60%;
 }
+
 
 .right{
     display:block;
     float: right;
-    width: 40%;
 }
 
 .fondoNegro {
     background-color: #0A0300;
 }
 
+.small {
+    height: 40%;
+    margin-left: 3px;
+
+}
 
 nav {
     background-color: #0A0300;
