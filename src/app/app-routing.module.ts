@@ -56,6 +56,10 @@ const routes: Routes = [
   },  {
     path: 'recuperar-cuenta',
     loadChildren: () => import('./pantallas/recuperar-cuenta/recuperar-cuenta.module').then( m => m.RecuperarCuentaPageModule)
+  },
+  {
+    path: 'verificacion',
+    loadChildren: () => import('./pantallas/verificacion/verificacion.module').then( m => m.VerificacionPageModule)
   }
 
 ];

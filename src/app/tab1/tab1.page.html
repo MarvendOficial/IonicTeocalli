@@ -1,17 +1,69 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title style="text-align: center;">
-      Mi perfil
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<div class="cabecera">
+  <ion-label>
+    <h1 class="tittleHead">Mi Perfil</h1>
+   </ion-label>
+</div>
+<ion-content class="fondoNegro">
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-col size=6>
+            <ion-card-content>
+              <ion-label>
+                <nav class="nav1">
+                  <img class="center" src="../../assets/svg/login-1.svg" alt="svg login">
+                </nav>
+              </ion-label>
+            </ion-card-content>
+          </ion-col>            
+          <ion-col size=6>
+            <ion-card-content>
+              <ion-label>
+               <h2>Datos</h2>
+               <br>
+               <p>Lorem ipsum dolor sit
+               </p>
+               <ion-button fill="clear" class="btn-full center" href="actualizar-perfil"><span>Actualizar Perfil</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
+              </ion-label>
+            </ion-card-content>
+          </ion-col> 
+        </ion-row>
+        <ion-row class="nav2">
+          <ion-col size="6">
+            <h2>Docuentos</h2>
+          </ion-col>
+          <ion-col size="6">
+            <h2>Subir</h2>
+          </ion-col>
+          <ion-col size="6">
+            <ion-icon class="center ion-icon" name="document"></ion-icon>
+            <h3>INE</h3>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button fill="clear" class="btn-full1 center" href=""><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-icon class="center ion-icon" name="document"></ion-icon>
+            <h3>INE</h3>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button fill="clear" class="btn-full1 center" href=""><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-icon class="center ion-icon" name="document"></ion-icon>
+            <h3>INE</h3>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button fill="clear" class="btn-full1 center" href=""><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-icon class="center ion-icon" name="document"></ion-icon>
+            <h3>INE</h3>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button fill="clear" class="btn-full1 center" href=""><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
 </ion-content>

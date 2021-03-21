@@ -16,18 +16,6 @@ ion-input {
     color: white;
 }
 
-.ion-icon {
-    font-size: 2.25em;
-    padding-top: .20em;
-    margin-top: auto;
-}
-
-.tittleHead {
-    padding-top: .5em;
-    font-weight: bold;
-    
-}
-
 h1 {
     color: white;
     font-family: 'Segoe UI';
@@ -45,29 +33,10 @@ a {
     font-family: 'Segoe UI';
 }
 
-p {
-    text-align: justify;
-}
-
-.nav1 {
+nav {
    border: 2px solid #FF4D00;
-   margin: 0em;
-   padding: 2.5em;
-   height: 11em;
-}
-
-.nav2 {
-   border: 2px solid #FF4D00;
-   margin: .90em;
-   padding: 2.5em;
-   height: 100%;
-   width: 93%;
-}
-
-.cabecera {
-    background-color: #FF4D00;
-    width: 100%;
-    height: 4em;
+   margin: 2em;
+   padding: 1.5em;
 }
 
 /** orangeFull **/
@@ -84,21 +53,7 @@ p {
   font-size: 0.75em;
   font-family: 'Segoe UI';
   margin-top: 2em;
-  width: 100%;
-}
-.btn-full1 {
-  background-color: none; 
-  background-color: #FF4D00; 
-  border: none;
-  border-radius: 25px;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 0.75em;
-  font-family: 'Segoe UI';
-  margin-top: 1em;
-  width: 50%;
+  width: 70%;
 }
 
 /** orangeOutFull **/
@@ -119,6 +74,14 @@ p {
   font-family: 'Segoe UI';
 }
 
+.titulo1 {
+    text-align: center;
+    color: white;
+    font-family: 'Segoe UI';
+    font-size: 1em;
+    align-items: center;
+    
+}
 
 .center{
     display:block;
@@ -151,28 +114,3 @@ main{
     background-color: #0A0300;
 }
 
-h1 {
-    color: white;
-    font-family: 'Segoe UI';
-    text-align: center;
-    padding: 0em;
-    margin: 0em;
-}
-
-h2 {
-    color: white;
-    font-family: 'Segoe UI';
-    text-align: center;
-    padding: 0em;
-    margin: 0em;
-    font-size: 1.25em;
-}
-
-h3 {
-    color: white;
-    font-family: 'Segoe UI';
-    text-align: center;
-    padding-top: .20em;
-    margin: 0em;
-    font-size: 1em;
-}
