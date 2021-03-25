@@ -2,8 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const direccionAPI = "https://afternoon-reaches-14063.herokuapp.com";
 export const environment = {
-  production: false
+  production: false,
+  apiURl: direccionAPI,
+  direccionCrearCuenta: direccionAPI + '/api/v1/auth/account',
+  direccionIniciarSesion: direccionAPI + '/api/v1/auth',
+  direccionCC: direccionAPI + '/api/v1/auth/changue_password'
 };
 
 /*

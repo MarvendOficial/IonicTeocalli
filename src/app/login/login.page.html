@@ -10,16 +10,16 @@
           </ion-col>            
           <ion-col size=12>
             <ion-card-content>
-              <ion-input placeholder="Usuario"></ion-input>
-              <ion-input placeholder="Contraseña"></ion-input>
-              <ion-button fill="clear" class="btn-full center" href="verificacion"><span>Iniciar Sesión</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
+              <ion-input name="username" [(ngModel)]="postData.username" placeholder="username" type="text"></ion-input>
+              <ion-input name="password" [(ngModel)]="postData.Password" placeholder="password" type="password"></ion-input>
+              <ion-button (click)="login()" fill="clear" class="btn-full center" ><span>Iniciar Sesión</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
               <br>
               <a href="/recuperar-cuenta">Recuperar contraseña.</a>
               <br>
             </ion-card-content>
           </ion-col>
           <ion-col size="12">
-            <ion-button fill="clear" class="btn-outFull right" href="/registrar">Registrarse<img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg login"></ion-button>
+            <ion-button  fill="clear" class="btn-outFull right" href="/registrar">Registrarse<img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg login"></ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

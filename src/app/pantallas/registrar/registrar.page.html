@@ -9,14 +9,16 @@
             </ion-card-header>
           </ion-col>            
           <ion-col size=12>
+            <form #form="ngForm" (ngSubmit)="crearCuenta(registrar)">
             <ion-card-content>
-              <ion-input placeholder="Usuario"></ion-input>
-              <ion-input placeholder="Nombre(s)"></ion-input>
-              <ion-input placeholder="Apellido(s)"></ion-input>
-              <ion-input placeholder="Correo"></ion-input>
-              <ion-input placeholder="Password"></ion-input>
-              <ion-button fill="clear" class="btn-full center" href="/login">Registrar<img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg login"></ion-button>
+              <ion-input [(ngModel)]="registrar.name" name="name" type="text" placeholder="Nombre(s)"></ion-input>
+              <ion-input [(ngModel)]="registrar.father_surname" name="father_surname" type="text" placeholder="Apellido Paterno"></ion-input>
+              <ion-input [(ngModel)]="registrar.mother_surname" name="mother_surname" type="text" placeholder="Apellido Materno"></ion-input>
+              <ion-input [(ngModel)]="registrar.username" name="username" type="text" placeholder="Correo"></ion-input>
+              <ion-input [(ngModel)]="registrar.Password" name="Password" type="text" placeholder="Password"></ion-input>
+              <ion-button type="submit"  fill="clear" class="btn-full center" >Registrar<img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg login"></ion-button>
             </ion-card-content>
+            </form>
           </ion-col>
         </ion-row>
       </ion-grid>
