@@ -67,6 +67,10 @@ const routes: Routes = [
         path: 'verificar',
         loadChildren: () => import('../pantallas/verificar/verificar.module').then(m => m.VerificarPageModule)
       },
+      {
+        path: 'formulario-pagar-renta',
+        loadChildren: () => import('../pantallas/formulario-pagar-renta/formulario-pagar-renta.module').then( m => m.FormularioPagarRentaPageModule)
+      },
 
       {
         path: '',

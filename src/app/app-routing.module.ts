@@ -60,6 +60,10 @@ const routes: Routes = [
   {
     path: 'verificacion',
     loadChildren: () => import('./pantallas/verificacion/verificacion.module').then( m => m.VerificacionPageModule)
+  },
+  {
+    path: 'formulario-pagar-renta',
+    loadChildren: () => import('./pantallas/formulario-pagar-renta/formulario-pagar-renta.module').then( m => m.FormularioPagarRentaPageModule)
   }
 
 ];

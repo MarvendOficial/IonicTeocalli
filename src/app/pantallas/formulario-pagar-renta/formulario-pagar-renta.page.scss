@@ -12,6 +12,7 @@ ion-card {
 ion-input {
     border-bottom: 2px solid #FF4D00;
     margin-top: .5em;
+    margin-bottom: 1em;
     font-family: 'Segoe UI';
     color: white;
 }
@@ -97,7 +98,7 @@ p {
   font-size: 0.75em;
   font-family: 'Segoe UI';
   margin-top: 0em;
-  width: 50%;
+  width: 100%;
 }
 
 /** orangeOutFull **/
@@ -167,7 +168,7 @@ h2 {
 }
 
 h3 {
-    color: rgb(51, 255, 0);
+    color: white;
     font-family: 'Segoe UI';
     text-align: center;
     padding: .25em;
