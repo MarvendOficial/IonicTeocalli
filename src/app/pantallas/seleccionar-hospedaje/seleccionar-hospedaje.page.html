@@ -1,9 +1,48 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>seleccionarHospedaje</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<div class="cabecera">
+  <ion-label>
+    <h1 class="tittleHead">Hospedaje</h1>
+   </ion-label>
+</div>
+<ion-content class="fondoNegro">
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-col size=6>
+            <ion-card-content>
+              <ion-label>
+                <nav class="nav1">
+                  <img class="center" src="../../assets/svg/login-1.svg" alt="svg login">
+                </nav>
+              </ion-label>
+            </ion-card-content>
+          </ion-col>            
+          <ion-col size=6>
+            <ion-card-content>
+              <ion-label>
+               <h2>Dirección</h2>
+               <br>
+               <p>Lorem ipsum dolor sit
+               </p>
+               <ion-button fill="clear" class="btn-full center" href="actualizar-perfil"><span>Ver ubicación</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
+              </ion-label>
+            </ion-card-content>
+          </ion-col> 
+        </ion-row>
+        <ion-row class="nav2">
+          <ion-col size="12">
+            <h2>Información del hospedaje</h2>
+            <br>
+            <h3>Costo mensual</h3>
+            <p>$00000</p>
+            <h3>Servicios que ofrece</h3>
+            <ul>
+              <li>Luz</li>
+              <li>Agua</li>
+              <li>Cable</li>
+            </ul>
+            <ion-button fill="clear" class="btn-outFull center" href="tabs/contactar-dueno">Contactar dueño</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
 </ion-content>
