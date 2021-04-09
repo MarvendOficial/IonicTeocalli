@@ -1,13 +1,15 @@
 <div class="cabecera">
+  <ion-button class="btn-back absolute" fill="clear" type="button" onclick="history.back()">
+    <img class="reverse" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth">
+  </ion-button>
   <ion-label>
-    <h1 class="tittleHead">Pagar Renta</h1>
+    <h1 class="tittleHead center">Pagar Renta</h1>
   </ion-label>
 </div>
 <ion-content class="fondoNegro">
-  <ion-card>
+  <ion-card class="">
     <ion-grid class="nav2">
       <ion-row>
-
           <ion-col size="3">
             <ion-label>Nombre</ion-label>
           </ion-col>
@@ -29,7 +31,13 @@
           <ion-col size="12">
             <ion-button fill="clear" class="btn-full1 center" href="/tabs/pagar-renta">Pagar</ion-button>
           </ion-col>
+      </ion-row>
 
+
+      <ion-row>
+        <ion-col>
+          <ion-button>Present Modal</ion-button>
+        </ion-col>
       </ion-row>
 
     </ion-grid>

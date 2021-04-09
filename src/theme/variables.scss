@@ -254,3 +254,23 @@
     --ion-card-background: #1e1e1e;
   }
 }
+
+
+.btn-back {
+  color: white;
+  background-color: #0A0300;
+  border-radius: 100%;
+  width: 3.2em;
+  height: 3.2em;
+  margin-top: .6em;
+  margin-left: .6em;
+}
+
+.reverse {
+  transform: scaleX(-1);
+  margin-right: .3em;
+}
+
+.absolute {
+  position: absolute;
+}
