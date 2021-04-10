@@ -9,13 +9,17 @@
             </ion-card-header>
           </ion-col>            
           <ion-col size=12>
-            <ion-card-content>
-              <ion-input placeholder="Name"></ion-input>
-              <ion-input placeholder="Last Name"></ion-input>
-              <ion-input placeholder="Email"></ion-input>
-              <ion-input placeholder="Password"></ion-input>
-              <ion-button fill="clear" class="btn-full center" href="tabs/tab1">Update</ion-button>
-            </ion-card-content>
+            <form #form="ngForm" (ngSubmit)="updateData(update)">
+              <ion-card-content>
+                <ion-input [(ngModel)]="update.name" name="name" type="text" ></ion-input>
+                <ion-input [(ngModel)]="update.username" disabled name="username" type="text" ></ion-input>
+                <ion-input [(ngModel)]="update.father_surname" name="father_surname" type="text" ></ion-input>
+                <ion-input [(ngModel)]="update.mother_surname" name="mother_surname" type="text" ></ion-input>
+                <ion-input [(ngModel)]="update.gender" name="gender" type="text"></ion-input>
+                
+                <ion-button type="submit"  fill="clear" class="btn-full center" >Update</ion-button>
+              </ion-card-content>
+              </form>
           </ion-col>
         </ion-row>
       </ion-grid>

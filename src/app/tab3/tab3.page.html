@@ -10,62 +10,34 @@
       <ion-grid class="espacioVertical">
         <ion-row>
           <ion-col>
-            <ion-row >
+            <ion-row >  
               <ion-col class="nav2" size="8">
-                <ion-input placeholder="Buscar por ciudad"></ion-input>
+                <ion-input name="busqueda" [(ngModel)]="busqueda" placeholder="Buscar por ciudad"></ion-input>
               </ion-col>
               <ion-col class="nav2" size="2">
-                <ion-icon name="search-outline"></ion-icon>
+                <ion-icon name="search-outline" (click)="search()"></ion-icon>
               </ion-col>
             </ion-row>
-
-            <ion-row class="espacioVertical">
-              <ion-col class="nav3" size="11">
-                <a class="tarjeta" href="tabs/seleccionar-hospedaje">
-                <ion-row>
-                  <ion-col size="6">
-                    <img class="fotoHospedaje" src="../../assets/img/tehuacan.png">
-                  </ion-col>
-                  <ion-col size="6">
-                    <h1 class="tittleCard">Tehuacán</h1>
-                    <p class="parrafo">
-                      Royal Place Hotel Boutique Tehuaca Royal Place Hotel Boutique Tehuaca
-                    </p>
-                  </ion-col>
-                </ion-row>
-              </a>
-              </ion-col>
-            </ion-row>
-            <ion-row class="espacioVertical">
+          <div *ngIf="hospedajes.length === 0">
+            <p>no se encotro resultados</p>
+          </div>
+            <div *ngIf="hospedajes">            
+            <ion-row class="espacioVertical" *ngFor="let d of hospedajes">
               <ion-col class="nav3" size="11">
                 <ion-row>
                   <ion-col size="6">
                     <img class="fotoHospedaje" src="../../assets/img/tehuacan.png">
                   </ion-col>
                   <ion-col size="6">
-                    <h1 class="tittleCard">Tehuacán</h1>
+                    <h1 class="tittleCard">{{d.Name}}</h1>
                     <p class="parrafo">
-                      Royal Place Hotel Boutique Tehuaca Royal Place Hotel Boutique Tehuaca
+                      {{d.Street}}
                     </p>
                   </ion-col>
                 </ion-row>
               </ion-col>
             </ion-row>
-            <ion-row class="espacioVertical">
-              <ion-col class="nav3" size="11">
-                <ion-row>
-                  <ion-col size="6">
-                    <img class="fotoHospedaje" src="../../assets/img/tehuacan.png">
-                  </ion-col>
-                  <ion-col size="6">
-                    <h1 class="tittleCard">Tehuacán</h1>
-                    <p class="parrafo">
-                      Royal Place Hotel Boutique Tehuaca Royal Place Hotel Boutique Tehuaca
-                    </p>
-                  </ion-col>
-                </ion-row>
-              </ion-col>
-            </ion-row>
+          </div>
 
           </ion-col>
         </ion-row>

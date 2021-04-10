@@ -1,20 +1,42 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { AuthConstants } from '../config/auth-constants';
+import { requestRegistrar } from '../interfaces/registrar';
+import { requestUpdateData } from '../interfaces/updateData';
 import { RegistrarService } from './registrar.service';
 import { StorageService } from './storage.service';
 
+
+const usersAll = environment.Data;
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  private registrar = {
+    username: 'pedrouriel_@hotmail.com',
+    name: 'pedro421',
+    father_surname: 'cortez',
+    mother_surname: 'cortez',
+    gender: 'male'
+  }
+  private img= {
+    file: '',
+      filename: ''
+  }
+  id: number;
   constructor(
     private httpService: RegistrarService,
     private storageService: StorageService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private http: HttpClient
+  ) {
+    var datos = localStorage.getItem('user');
+    var array = JSON.parse(datos);
+    this.id = array.ID;
+  }
 
   // login(postDate: any): Observable<any> {
   //   return this.httpService.post('/api/v1/auth', postDate);
@@ -24,9 +46,63 @@ export class AuthService {
   //   return this.httpService.post('singup', postDate);
   // }
 
-  logout(){
-    this.storageService.removeItem(AuthConstants.AUTH).then(res =>{
+  logout() {
+    this.storageService.removeItem(AuthConstants.AUTH).then(res => {
       this.router.navigate(['']);
+    })
+  }
+
+  getData() {
+    return new Promise((resolve) => {
+      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/' + this.id).subscribe((data) => { resolve(data) }, err => { console.log(err) })
+      console.log("authServices")
+    })
+  }
+
+  updateData(datos) {
+    return new Promise((resolve) => {
+      this.http.put('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/' + this.id, datos).subscribe((data) => { resolve(data) }, err => { console.log(err) })
+      console.log("authServices")
+    })
+  }
+  setDocuments(name:string, file:string) {
+    this.img.file=file;
+    this.img.filename=name;
+    return new Promise((resolve) => {
+      this.http.post(`https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/${this.id}/documents`, this.img).subscribe((data) => { resolve(data) }, 
+      error => { alert(`${JSON.stringify(error)}`) });
+    })
+  }
+  updateDocument(id,name:string,file:string){
+    this.img.file=file;
+    this.img.filename=name;
+    return new Promise((resolve)=>{
+      this.http.put('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/documents/'+id,this.img).subscribe((data) => { resolve(data) }, 
+      error => { alert(`${JSON.stringify(error)}`) });
+    })
+  }
+  setProfileImage(name:string, file:string) {
+    this.img.file=file;
+    this.img.filename=name;
+    return new Promise((resolve) => {
+      this.http.patch('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/' + this.id, this.img).subscribe((data) => {
+        resolve(data)
+      }, error => { alert(`${JSON.stringify(error)}`) });
+    })
+
+  }
+  viewLessses(){
+    return new Promise((resolve)=>{
+      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/accommodations/').subscribe((data)=>{
+        resolve(data);
+      },error=>console.log(error))
+    })
+  }
+  searchLeesse(nombre){
+    return new Promise((resolve)=>{
+      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/accommodations/?city='+nombre).subscribe((data)=>{
+        resolve(data);
+      },err=>console.log(err))
     })
   }
 }

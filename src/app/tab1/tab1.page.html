@@ -1,3 +1,5 @@
+<meta http-equiv="refresh" content="30" />
+
 <div class="cabecera">
   <ion-button class="btn-back absolute" fill="clear" type="button" onclick="history.back()">
     <img class="reverse" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth">
@@ -7,66 +9,109 @@
   </ion-label>
 </div>
 <ion-content class="fondoNegro">
-    <ion-card>
-      <ion-grid>
-        <ion-row>
-          <ion-col size=6>
-            <ion-card-content>
-              <ion-label>
-                <nav class="nav1">
-                  <img class="center" src="../../assets/svg/login-1.svg" alt="svg login">
-                </nav>
-              </ion-label>
-            </ion-card-content>
-          </ion-col>            
-          <ion-col size=6>
-            <ion-card-content>
-              <ion-label>
-               <h2>Datos</h2>
-               <br>
-               <p>Lorem ipsum dolor sit
-               </p>
-               <ion-button fill="clear" class="btn-full center" href="actualizar-perfil"><span>Actualizar Perfil</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
-              </ion-label>
-            </ion-card-content>
-          </ion-col> 
-        </ion-row>
-        <ion-row class="nav2">
-          <ion-col size="6">
-            <h2>Docuentos</h2>
-          </ion-col>
-          <ion-col size="6">
-            <h2>Subir</h2>
-          </ion-col>
-          <ion-col size="6">
-            <ion-icon class="center ion-icon" name="document"></ion-icon>
-            <h3>INE</h3>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button fill="clear" class="btn-full1 center" href=""><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-icon class="center ion-icon" name="document"></ion-icon>
-            <h3>INE</h3>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button fill="clear" class="btn-full1 center" href=""><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-icon class="center ion-icon" name="document"></ion-icon>
-            <h3>INE</h3>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button fill="clear" class="btn-full1 center" href=""><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-icon class="center ion-icon" name="document"></ion-icon>
-            <h3>INE</h3>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button fill="clear" class="btn-full1 center" href=""><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col size=6>
+          <ion-card-content>
+            <ion-label>
+              <nav class="nav1">
+                <img (click)="setProfileImg()" class="center" src="{{user.ProfileImage}}" alt="svg login">
+              </nav>
+            </ion-label>
+          </ion-card-content>
+        </ion-col>
+        <ion-col size=6>
+          <ion-card-content>
+            <ion-label>
+              <h2>Datos</h2>
+              <br>
+              <p>{{user.name +" "+ user.father_surname +" "+ user.mother_surname}}
+              </p>
+              <ion-button fill="clear" class="btn-full center" href="actualizar-perfil"><span>Actualizar
+                  Perfil</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth">
+              </ion-button>
+            </ion-label>
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+      <ion-row class="nav2">
+        <!-- <ion-button (click)="selectFile()">select file</ion-button> -->
+          <!-- <ion-button (click)="updateData()">subir datos</ion-button> -->
+          <!-- <ion-button (click)="setProfileImage()">subir foto de perfil</ion-button> -->
+          <!-- <ion-button (click)="setProfileImg()">photo</ion-button> -->
+          <!-- <img *ngIf="base64String" src="{{base64String}}" alt=""> -->
+        <!-- <ion-button (click)="prueba()">buscar</ion-button> -->
+        <ion-col size="6">
+          <h2>Documentos</h2>
+        </ion-col>
+        <ion-col size="6">
+          <h2>Subir</h2>
+        </ion-col>
+        <ion-col size="6">
+          <div [ngSwitch]="documents[0].exist">
+            <ion-icon *ngSwitchCase="false" class="center ion-icon" name="document-outline"></ion-icon>
+            <ion-icon *ngSwitchCase="true" class="center ion-icon" name="document"></ion-icon>
+          </div>
+
+          <h3>INE</h3>
+        </ion-col>
+        <ion-col size="6">
+          <div [ngSwitch]="documents[0].exist">
+            <ion-button *ngSwitchCase="false" fill="clear" class="btn-full1 center" (click)="subirDoc('ine')"><img class="small"
+              src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+              <ion-button *ngSwitchCase="true" fill="clear" class="btn-full1 center" (click)="updateDoc('ine',documents[0].id)"><img class="small"
+                src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+          </div>
+          
+        </ion-col>
+        <ion-col size="6">
+          <div [ngSwitch]="documents[1].exist">
+            <ion-icon *ngSwitchCase="false" class="center ion-icon" name="document-outline"></ion-icon>
+            <ion-icon *ngSwitchCase="true" class="center ion-icon" name="document"></ion-icon>
+          </div>
+          <h3>Comp Estudio</h3>
+        </ion-col>
+        <ion-col size="6">
+          <div [ngSwitch]="documents[1].exist">
+            <ion-button *ngSwitchCase="false" fill="clear" class="btn-full1 center" (click)="subirDoc('comprobantEstudio')"><img class="small"
+              src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+              <ion-button *ngSwitchCase="true" fill="clear" class="btn-full1 center" (click)="updateDoc('comprobantEstudio',documents[1].id)"><img class="small"
+                src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <div [ngSwitch]="documents[2].exist">
+            <ion-icon *ngSwitchCase="false" class="center ion-icon" name="document-outline"></ion-icon>
+            <ion-icon *ngSwitchCase="true" class="center ion-icon" name="document"></ion-icon>
+          </div>
+          <h3>DomicilioAV</h3>
+        </ion-col>
+        <ion-col size="6">
+          <div [ngSwitch]="documents[2].exist">
+            <ion-button *ngSwitchCase="false" fill="clear" class="btn-full1 center" (click)="subirDoc('domicilioAval')"><img class="small"
+              src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+              <ion-button *ngSwitchCase="true" fill="clear" class="btn-full1 center" (click)="updateDoc('domicilioAval',documents[2].id)"><img class="small"
+                src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <div [ngSwitch]="documents[3].exist">
+            <ion-icon *ngSwitchCase="false" class="center ion-icon" name="document-outline"></ion-icon>
+            <ion-icon *ngSwitchCase="true" class="center ion-icon" name="document"></ion-icon>
+          </div>
+
+          <h3>INEAv</h3>
+        </ion-col>
+        <ion-col size="6">
+          <div [ngSwitch]="documents[3].exist">
+            <ion-button *ngSwitchCase="false" fill="clear" class="btn-full1 center" (click)="subirDoc('ineAval')"><img class="small"
+              src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+              <ion-button *ngSwitchCase="true" fill="clear" class="btn-full1 center" (click)="updateDoc('ineAval',documents[3].id)"><img class="small"
+                src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>

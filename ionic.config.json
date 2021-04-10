@@ -1,5 +1,7 @@
 {
   "name": "teocalli",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

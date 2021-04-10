@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from '@capacitor/core';
 import { MenuController, ToastController } from '@ionic/angular';
 import { AuthConstants } from '../config/auth-constants';
 import { Login } from '../interfaces/login';
@@ -20,12 +21,9 @@ export class LoginPage implements OnInit {
   };
 
   constructor(
-    private toastController: ToastController,
-    private rs:RegistrarService, 
-    private router: Router,
-    private menuControl: MenuController) {
-      this.menuControl.enable(false);
-     }
+    private toastController: ToastController, private rs: RegistrarService, private router: Router, private menuControl: MenuController) {
+    this.menuControl.enable(false);
+  }
 
   ngOnInit() {
     this.menuControl.enable(false);
@@ -57,29 +55,39 @@ export class LoginPage implements OnInit {
   //   }
   // }
 
- login(request: Login){
-  const postData: Login =
-  {
-   "username": this.postData.username,
-   "Password": this.postData.Password
-  }
- this.rs.iniciarSesion(postData).subscribe(res=>{
-   this.presentarError("¡Has iniciado sesion con Exito!");
-   this.router.navigateByUrl('/tabs/tab1');
- });
- }
+  login(request: Login) {
+    const postData: Login =
+    {
+      "username": this.postData.username,
+      "Password": this.postData.Password
+    }
 
- async presentarError(msg:string){
-  const toast = await this.toastController.create({
-    message: msg,
-    duration: 2000,
-    position: 'bottom',
-    color: 'naTeo',
-    cssClass: 'toast',
- 
-  });
-  toast.present();
-}
+    this.rs.iniciarSesion(postData).subscribe(res => {
+      this.localStorageData(res);
+      this.presentarError("¡Has iniciado sesion con Exito!");
+      this.router.navigateByUrl('/tabs/tab1');
+
+    }, err => {alert(err) });
+  }
+
+  localStorageData(res) {
+    const userData = res.data.user;
+    const token = res.data.access_token;
+    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('token', token );
+    console.log(localStorage.getItem("user"));
+  }
+  async presentarError(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000,
+      position: 'bottom',
+      color: 'naTeo',
+      cssClass: 'toast',
+
+    });
+    toast.present();
+  }
 
 
 }

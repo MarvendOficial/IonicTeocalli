@@ -8,7 +8,9 @@ export const environment = {
   apiURl: direccionAPI,
   direccionCrearCuenta: direccionAPI + '/api/v1/auth/account',
   direccionIniciarSesion: direccionAPI + '/api/v1/auth',
-  direccionCC: direccionAPI + '/api/v1/auth/changue_password'
+  direccionCC: direccionAPI + '/api/v1/auth/changue_password',
+  updateData: direccionAPI + '/api/v1/clients/64',
+  Data: direccionAPI + '/api/v1/clients/64'
 };
 
 /*
