@@ -11,7 +11,12 @@ ion-card {
 
 ion-input {
     border-bottom: 2px solid #FF4D00;
-    margin-top: .5em;
+    margin-top: -.9em;
+    font-family: 'Segoe UI';
+}
+
+ion-label {
+    color: white;
     font-family: 'Segoe UI';
 }
 
@@ -37,6 +42,19 @@ nav {
    border: 2px solid #FF4D00;
    margin: 2em;
 }
+
+.tittleHead {
+    padding-top: .5em;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.cabecera {
+    background-color: #FF4D00;
+    width: 100%;
+    height: 4em;
+}
+
 
 /** orangeFull **/
 

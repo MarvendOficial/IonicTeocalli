@@ -1,3 +1,11 @@
+<div class="cabecera">
+  <ion-button class="btn-back absolute" fill="clear" type="button" onclick="history.back()">
+    <img class="reverse" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth">
+  </ion-button>
+  <ion-label>
+    <h1 class="tittleHead center">Hospedajes</h1>
+  </ion-label>
+</div>
 <ion-content class="fondoNegro">
   <nav>
     <ion-card>
@@ -10,7 +18,7 @@
           </ion-col>            
           <ion-col size=12>
             <ion-card-content>
-              <ion-input placeholder="username" [(ngModel)]="postData.username" placeholder="username" type="text"></ion-input>
+              <ion-input placeholder="username" [(ngModel)]="postData.username" placeholder="Usuario ó correo" type="text"></ion-input>
               <br>
               <ion-label>Se enviará un código de recuperación en su correo.</ion-label>
               <ion-button (click)="CambioDeContra()"  fill="clear" class="btn-full center" href="/login">Enviar<img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg login"></ion-button>

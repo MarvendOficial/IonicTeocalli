@@ -1,23 +1,62 @@
+<div class="cabecera">
+  <ion-button class="btn-back absolute" fill="clear" type="button" onclick="history.back()">
+    <img class="reverse" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth">
+  </ion-button>
+  <ion-label>
+    <h1 class="tittleHead center">Actualizar Perfil</h1>
+  </ion-label>
+</div>
 <ion-content class="fondoNegro">
   <nav>
     <ion-card>
       <ion-grid>
-        <ion-row>
-          <ion-col size=12>
-            <ion-card-header>
-              <h1>Actualizar Perfil</h1>
-            </ion-card-header>
-          </ion-col>            
+        <ion-row>     
           <ion-col size=12>
             <form #form="ngForm" (ngSubmit)="updateData(update)">
               <ion-card-content>
-                <ion-input [(ngModel)]="update.name" name="name" type="text" ></ion-input>
-                <ion-input [(ngModel)]="update.username" disabled name="username" type="text" ></ion-input>
-                <ion-input [(ngModel)]="update.father_surname" name="father_surname" type="text" ></ion-input>
-                <ion-input [(ngModel)]="update.mother_surname" name="mother_surname" type="text" ></ion-input>
-                <ion-input [(ngModel)]="update.gender" name="gender" type="text"></ion-input>
-                
-                <ion-button type="submit"  fill="clear" class="btn-full center" >Update</ion-button>
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-label>Nombre</ion-label>
+                  </ion-col>
+                  <ion-col size="12">
+                    <ion-input [(ngModel)]="update.name" name="name" type="text" ></ion-input>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-label>Correo</ion-label>
+                  </ion-col>
+                  <ion-col size="12">
+                    <ion-input [(ngModel)]="update.username" disabled name="username" type="text" ></ion-input>    
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-label>Apellido Paterno</ion-label>
+                  </ion-col>
+                  <ion-col size="12">
+                    <ion-input [(ngModel)]="update.father_surname" name="father_surname" type="text" ></ion-input>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-label>Apellido Materno</ion-label>
+                  </ion-col>
+                  <ion-col size="12">
+                    <ion-input [(ngModel)]="update.mother_surname" name="mother_surname" type="text" ></ion-input>
+                  </ion-col>
+                </ion-row>
+                <br>
+                <ion-row>
+                  <ion-col size="3">
+                    <ion-label>Sexo</ion-label>
+                  </ion-col>
+                  <ion-col size="9">
+                    <ion-input [(ngModel)]="update.gender" name="gender" type="text"></ion-input>
+                  </ion-col>
+                </ion-row>
+
+                <ion-button type="submit"  fill="clear" class="btn-full center" >Actualizar</ion-button>
               </ion-card-content>
               </form>
           </ion-col>
