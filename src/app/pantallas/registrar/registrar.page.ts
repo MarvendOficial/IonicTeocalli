@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { MenuController, ToastController } from '@ionic/angular';
 import { RegistrarService } from 'src/app/servicioApi/registrar.service';
-import { requestRegistrar } from '../../interfaces/registrar'
+import { requestRegistrar } from '../../interfaces/registrar';
 
 
 @Component({
@@ -12,50 +12,46 @@ import { requestRegistrar } from '../../interfaces/registrar'
 })
 export class RegistrarPage implements OnInit {
 
-  private registrar : requestRegistrar = {
+  registrar = {
     user_role_id: 2,
     name: '',
     father_surname: '',
     mother_surname: '',
     username: '',
-    Password: ''
-  }
+    Password: '',
+    gender: ''
+  };
 
   constructor(
-    private rs:RegistrarService, 
-    private router: Router, 
+    private rs: RegistrarService,
+    private router: Router,
     private toastController: ToastController,
     private menuControl: MenuController
-    ) {
-   }
+  ) {
+  }
 
-   crearCuenta(registrar: requestRegistrar){
-     const postData: requestRegistrar =
-     {
-      "user_role_id": registrar.user_role_id,
-      "name": registrar.name,
-      "father_surname": registrar.father_surname,
-      "mother_surname": registrar.mother_surname,
-      "username": registrar.username,
-      "Password": registrar.Password
-     }
-    this.rs.crearCuenta(postData).subscribe(res=>{
-      this.presentarError("¡Registro Exitoso!");
-      this.router.navigateByUrl('/login');
+  crearCuenta() {
+    console.log(this.registrar);
+    this.rs.crearCuenta(this.registrar).then((res) => {
+      this.presentarError('Favor de verificar su correo e ingresar la claves');
+      const res1 = JSON.stringify(res);
+      const res2 = JSON.parse(res1).data;
+      console.log(res2);
+      this.router.navigateByUrl('verificacion/' + res2.id);
+    }, error => alert('cuenta existente o contraseña no valida'));
+  }
+
+  async presentarError(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000,
+      position: 'bottom',
+      color: 'naTeo',
+      cssClass: 'toast',
+
     });
-   }
-
-   async presentarError(msg:string){
-     const toast = await this.toastController.create({
-       message: msg,
-       duration: 2000,
-       position: 'bottom',
-       color: 'naTeo',
-       cssClass: 'toast',
-    
-     });
-     toast.present();
-   }
+    toast.present();
+  }
 
   ngOnInit() {
     this.menuControl.enable(false);

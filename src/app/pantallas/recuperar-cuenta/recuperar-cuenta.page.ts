@@ -11,10 +11,12 @@ import { RegistrarService } from 'src/app/servicioApi/registrar.service';
 })
 export class RecuperarCuentaPage implements OnInit {
 
-  public postData = {
+  public postData: CambioDeContraseña = {
     username: ''
   };
-
+  idRecuperacion;
+  contra;
+  codigo;
   constructor(
     private toastController: ToastController,
     private rs: RegistrarService,
@@ -25,12 +27,20 @@ export class RecuperarCuentaPage implements OnInit {
   }
 
   CambioDeContra() {
-    const postData: CambioDeContraseña =
-    {
-      "username": this.postData.username
-    }
-    this.rs.CambiarContra(postData).subscribe(res => {
+    this.rs.CambiarContra(this.postData).subscribe(res => {
+      console.log(res);
+      const res2 = JSON.stringify(res);
+      this.idRecuperacion = JSON.parse(res2).data.id;
       this.presentarError("Se ha enviado un mensaje a tu correo");
+      // this.router.navigateByUrl('');
+    });
+  }
+  contraNueva() {
+
+    console.log(this.codigo, this.idRecuperacion, this.contra);
+    this.rs.nuevaContra(this.idRecuperacion, this.codigo, this.contra).then((res) => {
+      console.log(res);
+      this.presentarError('se ha cambiado de contraseña');
       this.router.navigateByUrl('');
     });
   }

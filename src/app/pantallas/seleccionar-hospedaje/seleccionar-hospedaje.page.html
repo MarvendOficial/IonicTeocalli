@@ -14,7 +14,8 @@
             <ion-card-content>
               <ion-label>
                 <nav class="nav1">
-                  <img class="center" src="../../assets/svg/login-1.svg" alt="svg login">
+                  <img *ngIf="img" src="{{img.URL}}" alt="svg login">
+                  <img  *ngIf="!img" src="../../assets/img/tehuacan.png" alt="svg login">
                 </nav>
               </ion-label>
             </ion-card-content>
@@ -22,11 +23,12 @@
           <ion-col size=6>
             <ion-card-content>
               <ion-label>
-               <h2>Dirección</h2>
+               <h2>{{hospedajes.Street}}</h2>
                <br>
-               <p>Lorem ipsum dolor sit
-               </p>
-               <ion-button fill="clear" class="btn-full center" href="ver-ubicacion"><span>Ver ubicación</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
+               <p>{{hospedajes.Name}}</p>
+               <br>
+               <p>{{hospedajes.City}}</p>
+               <ion-button fill="clear" class="btn-full center" (click)="solicitud(hospedajes.ID)"><span>Enviar Solicitud</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
               </ion-label>
             </ion-card-content>
           </ion-col> 
@@ -36,14 +38,14 @@
             <h2>Información del hospedaje</h2>
             <br>
             <h3>Costo mensual</h3>
-            <p>$00000</p>
+            <p>${{hospedajes.Price}}</p>
             <h3>Servicios que ofrece</h3>
             <ul>
               <li>Luz</li>
               <li>Agua</li>
               <li>Cable</li>
             </ul>
-            <ion-button fill="clear" class="btn-outFull center" href="tabs/contactar-dueno">Contactar dueño</ion-button>
+            <ion-button fill="clear" class="btn-outFull center"(click)="seleccionar(hospedajes.LesseeID)" >Contactar dueño</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

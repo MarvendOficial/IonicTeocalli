@@ -10,16 +10,17 @@
     <ion-card>
       <ion-grid>
         <ion-row>
-          <ion-col size=6>
+          <ion-col size=12>
             <ion-card-content>
               <ion-label>
                 <nav class="nav1">
-                  <img class="center" src="../../assets/svg/login-1.svg" alt="svg login">
+                  <img *ngIf="!img" class="center" src="../../assets/svg/login-1.svg" alt="svg login">
+                  <img *ngIf="img" class="center" src="{{img}}" alt="svg login">
                 </nav>
               </ion-label>
             </ion-card-content>
           </ion-col>            
-          <ion-col size=6>
+          <!-- <ion-col size=6>
             <ion-card-content>
               <ion-label>
                <h2>Dirección</h2>
@@ -28,15 +29,24 @@
                </p>
               </ion-label>
             </ion-card-content>
-          </ion-col> 
+          </ion-col>  -->
         </ion-row>
         <ion-row class="nav2">
           <ion-col size="12">
             <h2>Información del dueño</h2>
-            <br>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus eius rem minima, ullam ratione </p>
-            <h2>Telefono:</h2>
-            <P>23812313135</P>
+            <p>{{nombeCompleto}} </p>
+          </ion-col>
+          <ion-col size="12">
+            <h2>Informacion de contacto:</h2>
+            <div *ngFor="let t of leesse.Contacts">
+              <p>{{t.Name +" : "+ t.Value}}</p>
+            </div>
+          </ion-col>
+          <ion-col size="12">
+            <h2>Direcciones</h2>
+            <div *ngFor="let d of leesse.Accommodations">
+              <p>{{d.City + " : " + d.Street}}</p>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>

@@ -3,7 +3,7 @@
     <img class="reverse" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth">
   </ion-button>
   <ion-label>
-    <h1 class="tittleHead center">Hospedajes</h1>
+    <h1 class="tittleHead center">  </h1>
   </ion-label>
 </div>
 <ion-content class="fondoNegro">
@@ -17,11 +17,18 @@
             </ion-card-header>
           </ion-col>            
           <ion-col size=12>
-            <ion-card-content>
+            <ion-card-content *ngIf="!idRecuperacion">
               <ion-input placeholder="username" [(ngModel)]="postData.username" placeholder="Usuario ó correo" type="text"></ion-input>
               <br>
               <ion-label>Se enviará un código de recuperación en su correo.</ion-label>
-              <ion-button (click)="CambioDeContra()"  fill="clear" class="btn-full center" href="/login">Enviar<img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg login"></ion-button>
+              <ion-button (click)="CambioDeContra()"  fill="clear" class="btn-full center">Enviar<img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg login"></ion-button>
+            </ion-card-content>
+            <ion-card-content *ngIf="idRecuperacion">
+              <ion-input placeholder="username" [(ngModel)]="contra" placeholder="contraseña nueva" type="text"></ion-input>
+              <ion-input placeholder="username" [(ngModel)]="codigo" placeholder="codigo de verificacion" type="text"></ion-input>
+              <br>
+              <!-- <ion-label>Se enviará un código de recuperación en su correo.</ion-label> -->
+              <ion-button (click)="contraNueva()"  fill="clear" class="btn-full center">Enviar<img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg login"></ion-button>
             </ion-card-content>
           </ion-col>
         </ion-row>

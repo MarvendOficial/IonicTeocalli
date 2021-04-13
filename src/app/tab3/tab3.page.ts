@@ -9,25 +9,33 @@ import { AuthService } from '../servicioApi/auth.service';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  busqueda = "";
+  busqueda = '';
   data: any;
-  hospedajes:any =[];
+  hospedajes: any = [];
   constructor(public navCtrl: NavController, public service: AuthService, private router: Router) {
 
-    this.service.viewLessses().then((data) => {
+    this.service.searchAccommodation('').then((data) => {
       console.log(data);
       this.data = JSON.stringify(data);
       this.hospedajes = JSON.parse(this.data).data;
-      console.log(this.hospedajes);
-    })
+      console.log(this.hospedajes[1].Images[0].URL);
+    });
+    console.log();
+
+  }
+  ionViewDidEnter(){
+    this.search();
   }
   search() {
-    console.log(this.busqueda)
-    this.service.searchLeesse(this.busqueda).then((res) => {
+    console.log(this.busqueda);
+    this.service.searchAccommodation(this.busqueda).then((res) => {
       console.log(res);
       this.data = JSON.stringify(res);
       this.hospedajes = JSON.parse(this.data).data;
       console.log(this.hospedajes);
-    })
+    });
+  }
+  seleccionarHospedaje(id) {
+    this.router.navigateByUrl('seleccionar-hospedaje/' + id);
   }
 }

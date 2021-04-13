@@ -21,11 +21,11 @@ export class AuthService {
     father_surname: 'cortez',
     mother_surname: 'cortez',
     gender: 'male'
-  }
-  private img= {
+  };
+  private img = {
     file: '',
-      filename: ''
-  }
+    filename: ''
+  };
   id: number;
   constructor(
     private httpService: RegistrarService,
@@ -33,8 +33,8 @@ export class AuthService {
     private router: Router,
     private http: HttpClient
   ) {
-    var datos = localStorage.getItem('user');
-    var array = JSON.parse(datos);
+    const datos = localStorage.getItem('user');
+    const array = JSON.parse(datos);
     this.id = array.ID;
   }
 
@@ -49,60 +49,103 @@ export class AuthService {
   logout() {
     this.storageService.removeItem(AuthConstants.AUTH).then(res => {
       this.router.navigate(['']);
-    })
+    });
   }
 
   getData() {
     return new Promise((resolve) => {
-      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/' + this.id).subscribe((data) => { resolve(data) }, err => { console.log(err) })
-      console.log("authServices")
-    })
+      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/' + this.id).
+        subscribe((data) => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+      console.log('authServices');
+    });
   }
 
   updateData(datos) {
     return new Promise((resolve) => {
-      this.http.put('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/' + this.id, datos).subscribe((data) => { resolve(data) }, err => { console.log(err) })
-      console.log("authServices")
-    })
+      this.http.put('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/' + this.id, datos)
+        .subscribe((data) => { resolve(data); }, err => { console.log(err); });
+      console.log('authServices');
+    });
   }
-  setDocuments(name:string, file:string) {
-    this.img.file=file;
-    this.img.filename=name;
+  setDocuments(name: string, file: string) {
+    this.img.file = file;
+    this.img.filename = name;
     return new Promise((resolve) => {
-      this.http.post(`https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/${this.id}/documents`, this.img).subscribe((data) => { resolve(data) }, 
-      error => { alert(`${JSON.stringify(error)}`) });
-    })
+      this.http.post(`https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/${this.id}/documents`, this.img)
+        .subscribe((data) => { resolve(data); },
+          error => { console.log(error) });
+    });
   }
-  updateDocument(id,name:string,file:string){
-    this.img.file=file;
-    this.img.filename=name;
-    return new Promise((resolve)=>{
-      this.http.put('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/documents/'+id,this.img).subscribe((data) => { resolve(data) }, 
-      error => { alert(`${JSON.stringify(error)}`) });
-    })
+  updateDocument(id, name: string, file: string) {
+    this.img.file = file;
+    this.img.filename = name;
+    return new Promise((resolve) => {
+      this.http.put('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/documents/' + id, this.img)
+        .subscribe((data) => { resolve(data); },
+          error => { console.log(error) });
+    });
   }
-  setProfileImage(name:string, file:string) {
-    this.img.file=file;
-    this.img.filename=name;
+  setProfileImage(name: string, file: string) {
+    this.img.file = file;
+    this.img.filename = name;
     return new Promise((resolve) => {
       this.http.patch('https://afternoon-reaches-14063.herokuapp.com/api/v1/clients/' + this.id, this.img).subscribe((data) => {
-        resolve(data)
-      }, error => { alert(`${JSON.stringify(error)}`) });
-    })
+        resolve(data);
+      }, error => { console.log(error) });
+    });
 
   }
-  viewLessses(){
-    return new Promise((resolve)=>{
-      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/accommodations/').subscribe((data)=>{
+
+  searchAccommodation(nombre) {
+    return new Promise((resolve) => {
+      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/accommodations/?city=' + nombre).subscribe((data) => {
         resolve(data);
-      },error=>console.log(error))
-    })
+      }, err => console.log(err));
+    });
   }
-  searchLeesse(nombre){
-    return new Promise((resolve)=>{
-      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/accommodations/?city='+nombre).subscribe((data)=>{
+  searchAccommodationId(id) {
+    return new Promise((resolve) => {
+      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/accommodations/' + id).subscribe((data) => {
         resolve(data);
-      },err=>console.log(err))
-    })
+      }, err => console.log(err));
+    });
   }
+  searchLesseId(id) {
+    return new Promise((resolve) => {
+      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/lessee/' + id).subscribe((data) => {
+        resolve(data);
+      }, err => console.log(err));
+    });
+  }
+  listPayments() {
+    return new Promise((resolve) => {
+      this.http.get('https://afternoon-reaches-14063.herokuapp.com/api/v1/payments/history/' + this.id).subscribe((data) => {
+        resolve(data);
+      }, err => console.log(err));
+    });
+  }
+  createSolicitud(idAcc) {
+    return new Promise((resolve) => {
+      this.http.post(`https://afternoon-reaches-14063.herokuapp.com/api/v1/accommodations/requests/${idAcc}/${this.id}`, null)
+        .subscribe((data) => {
+          resolve(data);
+        }, err => console.log(err));
+    });
+  }
+  payment(idAcc, precio) {
+    const obj = {
+      amount: precio
+    };
+    return new Promise((resolve) => {
+      this.http.post(`https://afternoon-reaches-14063.herokuapp.com/api/v1/payments/${this.id}/${idAcc}`, obj).subscribe((data) => {
+        resolve(data);
+      }, err => console.log(err));
+    });
+  }
+
+
 }

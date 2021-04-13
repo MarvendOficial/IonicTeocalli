@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from '../guards/login.guard';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -9,15 +10,18 @@ const routes: Routes = [
     children: [
       {
         path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule),
+        canActivate:[LoginGuard]
       },
       {
         path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule),
+        canActivate:[LoginGuard]
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule),
+        canActivate:[LoginGuard]
       },
       {
         path: 'login',
@@ -29,15 +33,18 @@ const routes: Routes = [
       },
       {
         path: 'actualizar-perfil',
-        loadChildren: () => import('../pantallas/actualizar-perfil/actualizar-perfil.module').then(m => m.ActualizarPerfilPageModule)
+        loadChildren: () => import('../pantallas/actualizar-perfil/actualizar-perfil.module').then(m => m.ActualizarPerfilPageModule),
+        canActivate:[LoginGuard]
       },
       {
-        path: 'contactar-dueno',
-        loadChildren: () => import('../pantallas/contactar-dueno/contactar-dueno.module').then(m => m.ContactarDuenoPageModule)
+        path: 'contactar-dueno/:id',
+        loadChildren: () => import('../pantallas/contactar-dueno/contactar-dueno.module').then(m => m.ContactarDuenoPageModule),
+        canActivate:[LoginGuard]
       },
       {
         path: 'historial-de-pagos',
-        loadChildren: () => import('../pantallas/historial-de-pagos/historial-de-pagos.module').then(m => m.HistorialDePagosPageModule)
+        loadChildren: () => import('../pantallas/historial-de-pagos/historial-de-pagos.module').then(m => m.HistorialDePagosPageModule),
+        canActivate:[LoginGuard]
       },
       {
         path: 'inicio-sin-hospedaje',
@@ -45,7 +52,8 @@ const routes: Routes = [
       },
       {
         path: 'pagar-renta',
-        loadChildren: () => import('../pantallas/pagar-renta/pagar-renta.module').then(m => m.PagarRentaPageModule)
+        loadChildren: () => import('../pantallas/pagar-renta/pagar-renta.module').then(m => m.PagarRentaPageModule),
+        canActivate:[LoginGuard]
       },
       {
         path: 'registrar',
@@ -53,7 +61,8 @@ const routes: Routes = [
       },
       {
         path: 'seleccionar-hospedaje',
-        loadChildren: () => import('../pantallas/seleccionar-hospedaje/seleccionar-hospedaje.module').then(m => m.SeleccionarHospedajePageModule)
+        loadChildren: () => import('../pantallas/seleccionar-hospedaje/seleccionar-hospedaje.module').then(m => m.SeleccionarHospedajePageModule),
+        canActivate:[LoginGuard]
       },
       {
         path: 'valorar',
@@ -68,8 +77,9 @@ const routes: Routes = [
         loadChildren: () => import('../pantallas/verificar/verificar.module').then(m => m.VerificarPageModule)
       },
       {
-        path: 'formulario-pagar-renta',
-        loadChildren: () => import('../pantallas/formulario-pagar-renta/formulario-pagar-renta.module').then( m => m.FormularioPagarRentaPageModule)
+        path: 'formulario-pagar-renta/:id',
+        loadChildren: () => import('../pantallas/formulario-pagar-renta/formulario-pagar-renta.module').then( m => m.FormularioPagarRentaPageModule),
+        canActivate:[LoginGuard]
       },
 
       {

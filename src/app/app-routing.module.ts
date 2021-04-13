@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from './guards/login.guard';
+import { NoLoginGuard } from './guards/no-login.guard';
 
 const routes: Routes = [
+  // {
+  //   path:'', redirectTo:'home',pathMatch:'full'
+  // },
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    // canActivate:[LoginGuard]
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
+    canActivate:[NoLoginGuard]
   },
   {
     path: 'registrar',
@@ -23,11 +30,11 @@ const routes: Routes = [
     loadChildren: () => import('./pantallas/inicio-sin-hospedaje/inicio-sin-hospedaje.module').then( m => m.InicioSinHospedajePageModule)
   },
   {
-    path: 'seleccionar-hospedaje',
+    path: 'seleccionar-hospedaje/:id',
     loadChildren: () => import('./pantallas/seleccionar-hospedaje/seleccionar-hospedaje.module').then( m => m.SeleccionarHospedajePageModule)
   },
   {
-    path: 'contactar-dueno',
+    path: 'contactar-dueno/:id',
     loadChildren: () => import('./pantallas/contactar-dueno/contactar-dueno.module').then( m => m.ContactarDuenoPageModule)
   },
   {
@@ -53,16 +60,17 @@ const routes: Routes = [
   {
     path: 'explore-container',
     loadChildren: () => import('./explore-container/explore-container.module').then( m => m.ExploreContainerComponentModule)
-  },  {
+  },
+  {
     path: 'recuperar-cuenta',
     loadChildren: () => import('./pantallas/recuperar-cuenta/recuperar-cuenta.module').then( m => m.RecuperarCuentaPageModule)
   },
   {
-    path: 'verificacion',
+    path: 'verificacion/:id',
     loadChildren: () => import('./pantallas/verificacion/verificacion.module').then( m => m.VerificacionPageModule)
   },
   {
-    path: 'formulario-pagar-renta',
+    path: 'formulario-pagar-renta/:id',
     loadChildren: () => import('./pantallas/formulario-pagar-renta/formulario-pagar-renta.module').then( m => m.FormularioPagarRentaPageModule)
   }
 

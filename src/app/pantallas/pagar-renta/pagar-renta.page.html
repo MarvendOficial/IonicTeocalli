@@ -18,42 +18,16 @@
           <h2>Pagar</h2>
         </ion-col>
       </ion-row>
-      <ion-row class="nav3">
+      <ion-row class="nav3" *ngFor="let a of userAccommodations.Accommodations">
         <ion-col size="6">
-          <h3>11/11/11</h3>
+          <h3>{{a.Name}}</h3>
         </ion-col>
         <ion-col size="6">
-          <ion-button fill="clear" class="btn-full1 center" href="/tabs/formulario-pagar-renta"><img class="small"
+          <ion-button fill="clear" class="btn-full1 center" (click)="pagar(a.ID)"><img class="small"
               src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
         </ion-col>
       </ion-row>
-      <ion-row class="nav3">
-        <ion-col size="6">
-          <h3>11/11/11</h3>
-        </ion-col>
-        <ion-col size="6">
-          <ion-button fill="clear" class="btn-full1 center" href="/tabs/formulario-pagar-renta"><img class="small"
-              src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row class="nav3">
-        <ion-col size="6">
-          <h3>11/11/11</h3>
-        </ion-col>
-        <ion-col size="6">
-          <ion-button fill="clear" class="btn-full1 center" href="/tabs/formulario-pagar-renta"><img class="small"
-              src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row class="nav3">
-        <ion-col size="6">
-          <h3>11/11/11</h3>
-        </ion-col>
-        <ion-col size="6">
-          <ion-button fill="clear" class="btn-full1 center" href="/tabs/formulario-pagar-renta"><img class="small"
-              src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
-        </ion-col>
-      </ion-row>
+     
     </ion-grid>
   </ion-card>
 </ion-content>

@@ -19,19 +19,42 @@ export class RegistrarService {
 
 
 
-  
-  crearCuenta(cuentaNueva: requestRegistrar) {
-    return this.httpService.post(direccionURlCrearCuenta, cuentaNueva);
-  }
 
+
+  crearCuenta(cuentaNueva) {
+    return new Promise((resolve) => {
+      this.httpService.post('https://afternoon-reaches-14063.herokuapp.com/api/v1/auth/account', cuentaNueva)
+        .subscribe((data) => { resolve(data); }, err => { console.log(err); });
+    });
+  }
+  verificarCuenta(id, code) {
+    const obj = {
+      code
+    };
+    return new Promise((resolve) => {
+      this.httpService.patch('https://afternoon-reaches-14063.herokuapp.com/api/v1/auth/account/' + id, obj)
+        .subscribe((data) => { resolve(data); }, err => { console.log(err); });
+    });
+  }
   iniciarSesion(iniciarSesion: Login) {
     return this.httpService.post(direccionURlIniciarSesion, iniciarSesion);
   }
   Validar(token: requestRegistrar) {
     return this.httpService.patch(direccionURlCrearCuenta, token);
   }
-  CambiarContra(username: CambioDeContraseña) {
+  CambiarContra(username) {
     return this.httpService.post(direccionURlCambiarC, username);
+  }
+
+  nuevaContra(idUser, codigo, contra) {
+    const obj = {
+      new_password: contra,
+      code: codigo
+    };
+    return new Promise((resolve) => {
+      this.httpService.patch('https://afternoon-reaches-14063.herokuapp.com/api/v1/auth/' + idUser, obj)
+        .subscribe((data) => { resolve(data); }, err => { console.log(err); });
+    });
   }
 
 

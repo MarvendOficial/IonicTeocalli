@@ -5,21 +5,21 @@
         <ion-row>
           <ion-col size=12>
             <ion-card-content>
-              <ion-label class="titulo1 center">Favor de ingresar su correo para verificar su cuenta.</ion-label>
-              <ion-input placeholder="Código"></ion-input>              
-              <ion-button fill="clear" class="btn-full center" href="verificacion"><span>Verificar Cuenta</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
+              <ion-label class="titulo1 center">Favor de ingresar su codigo para verificar su cuenta.</ion-label>
+              <ion-input placeholder="Código" [(ngModel)]="code"></ion-input>              
+              <ion-button fill="clear" class="btn-full center"(click)="verificarCuenta()"><span>Verificar Cuenta</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
             </ion-card-content>
             <hr>
-            <ion-card-content>
+            <!-- <ion-card-content>
               <ion-label class="titulo1 center">Reenviar codigo de verificacion.</ion-label>
-              <ion-input placeholder="Código"></ion-input>              
-              <ion-button fill="clear" class="btn-full center" href="verificacion"><span>Verificar Cuenta</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
+              <ion-input placeholder="Email"></ion-input>              
+              <ion-button fill="clear" class="btn-full center" (click)="reenviarCodigo()"><span>Verificar Cuenta</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
             </ion-card-content>
             <hr>
             <ion-card-content>
-              <ion-label class="titulo1 center">Su cuenta ha sido verificada.</ion-label>              
-              <ion-button fill="clear" class="btn-full center" href="tabs/tab1"><span>Continuar</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
-            </ion-card-content>
+                        
+              <ion-button fill="clear" class="btn-full center" href="tabs/tab1"><span>Verificar</span><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>                
+            </ion-card-content> -->
           </ion-col>
         </ion-row>
       </ion-grid>

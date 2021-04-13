@@ -9,7 +9,6 @@ import { AuthInterceptor } from '../interceptor/auth.interceptor';
 import {FilePath} from '@ionic-native/file-path/ngx';
 import {FileChooser} from '@ionic-native/file-chooser/ngx';
 import {Base64} from '@ionic-native/base64/ngx';
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
