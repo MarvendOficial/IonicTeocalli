@@ -262,7 +262,7 @@
   border-radius: 100%;
   width: 3.2em;
   height: 3.2em;
-  margin-top: .6em;
+  margin-top: 1.2em;
   margin-left: .6em;
   padding-right: .35em;
 }
@@ -274,4 +274,13 @@
 
 .absolute {
   position: absolute;
+}
+
+.cabecera {
+  padding-bottom: 5em;
+}
+
+.tittleHead {
+  padding-top: .7em !important;
+  font-size: 1.8em !important;
 }

@@ -3,6 +3,7 @@ app-login {
 }
 ion-content {
     background-color: #0A0300;
+
 }
 
 ion-card {
@@ -14,6 +15,11 @@ ion-input {
     margin-top: .5em;
     font-family: 'Segoe UI';
     color: white;
+}
+
+.sinEspacio {
+    padding: 0em;
+    margin: 0em;
 }
 
 .ion-icon {
@@ -37,6 +43,22 @@ img {
     text-align: center;
     padding: 0em;
     margin: 0em;
+    width: 100%;
+    height: 12em;
+    transition: .5s;
+    z-index: 100;
+    position: absolute;
+}
+
+img:hover {
+    transform : scale(2);
+    width: 200;
+    height: 200;
+    position: absolute;
+    z-index: 100;
+    transition: 0.5s;
+    margin-left: 6.6em;
+    margin-top: 5.8em;
 }
 
 a {
@@ -54,6 +76,10 @@ p {
    margin: 0em;
    padding: 2.5em;
    height: 11em;
+}
+.navFoto {
+   border: 2px solid #FF4D00;
+   margin: 0em;
 }
 
 .nav2 {
@@ -139,7 +165,7 @@ p {
 
 .small {
     height: 40%;
-    margin-left: 3px;
+    margin-left: 11em;
 
 }
 

@@ -10,14 +10,12 @@
     <ion-card>
       <ion-grid>
         <ion-row>
-          <ion-col size=6>
-            <ion-card-content>
-              <ion-label>
-                <nav class="nav1">
+          <ion-col class="sinEspacio" size=6>
+            <ion-card-content class="sinEspacio">
+                <nav class="navFoto">
                   <img *ngIf="img" src="{{img.URL}}" alt="svg login">
-                  <img  *ngIf="!img" src="../../assets/img/tehuacan.png" alt="svg login">
+                  <img *ngIf="!img" src="../../assets/img/tehuacan.png" alt="svg login">
                 </nav>
-              </ion-label>
             </ion-card-content>
           </ion-col>            
           <ion-col size=6>
