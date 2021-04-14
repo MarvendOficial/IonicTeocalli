@@ -25,7 +25,7 @@
           <h3>{{d.CreatedAt | date:"dd MMMM yyyy"}}</h3>
         </ion-col>
         <ion-col size="6">
-          <ion-button fill="clear" class="btn-full1 center"><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
+          <ion-button fill="clear" class="btn-full1 center" (click)="verInfo(d.ID)"><img class="small" src="../../assets/svg/arrow-rigth.svg" alt="svg arrow-rigth"></ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

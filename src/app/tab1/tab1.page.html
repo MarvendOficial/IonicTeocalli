@@ -45,7 +45,7 @@
         <ion-col size="6">
           <div [ngSwitch]="documents[0].exist">
             <ion-icon *ngSwitchCase="false" class="center ion-icon" name="document-outline"></ion-icon>
-            <ion-icon *ngSwitchCase="true" class="center ion-icon" name="document"></ion-icon>
+            <a *ngSwitchCase="true" href="{{documents[0].img}}"><ion-icon  class="center ion-icon" name="document"> </ion-icon></a>
           </div>
 
           <h3>INE</h3>
@@ -62,7 +62,7 @@
         <ion-col size="6">
           <div [ngSwitch]="documents[1].exist">
             <ion-icon *ngSwitchCase="false" class="center ion-icon" name="document-outline"></ion-icon>
-            <ion-icon *ngSwitchCase="true" class="center ion-icon" name="document"></ion-icon>
+            <a *ngSwitchCase="true" href="{{documents[1].img}}"><ion-icon  class="center ion-icon" name="document"> </ion-icon></a>
           </div>
           <h3>Comp Estudio</h3>
         </ion-col>
@@ -79,7 +79,7 @@
         <ion-col size="6">
           <div [ngSwitch]="documents[2].exist">
             <ion-icon *ngSwitchCase="false" class="center ion-icon" name="document-outline"></ion-icon>
-            <ion-icon *ngSwitchCase="true" class="center ion-icon" name="document"></ion-icon>
+            <a *ngSwitchCase="true" href="{{documents[2].img}}"><ion-icon  class="center ion-icon" name="document"> </ion-icon></a>
           </div>
           <h3>DomicilioAV</h3>
         </ion-col>
@@ -95,7 +95,7 @@
         <ion-col size="6">
           <div [ngSwitch]="documents[3].exist">
             <ion-icon *ngSwitchCase="false" class="center ion-icon" name="document-outline"></ion-icon>
-            <ion-icon *ngSwitchCase="true" class="center ion-icon" name="document"></ion-icon>
+            <a *ngSwitchCase="true" href="{{documents[3].img}}"><ion-icon  class="center ion-icon" name="document"> </ion-icon></a>
           </div>
 
           <h3>INEAv</h3>

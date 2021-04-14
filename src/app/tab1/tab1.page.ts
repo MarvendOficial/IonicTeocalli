@@ -15,10 +15,10 @@ export class Tab1Page {
   data: any;
   user: any;
   documents = [
-    { id: null, exist: false },
-    { id: null, exist: false },
-    { id: null, exist: false },
-    { id: null, exist: false },
+    { id: null, exist: false, img: null },
+    { id: null, exist: false, img: null },
+    { id: null, exist: false, img: null },
+    { id: null, exist: false, img: null },
   ];
   id: any;
 
@@ -29,14 +29,17 @@ export class Tab1Page {
     console.log(this.user.ProfileImage);
   }
   ionViewDidEnter() {
-    this.searchDocument();
-    this.service.getData().then((res) => {
-      const res1 = JSON.stringify(res);
-      const res2 = JSON.parse(res1).data;
-      this.user = res2;
-      console.log(this.user);
-      localStorage.setItem('user', JSON.stringify(res2));
-    });
+    setInterval(() => {
+      this.service.getData().then((res) => {
+        const res1 = JSON.stringify(res);
+        const res2 = JSON.parse(res1).data;
+        this.user = res2;
+        console.log(this.user);
+        localStorage.setItem('user', JSON.stringify(res2));
+      });
+      this.searchDocument();
+    },3000)
+
   }
   setProfileImg() {
     this.fileChooser.open().then((fileutl) => {
@@ -80,26 +83,37 @@ export class Tab1Page {
     });
   }
   searchDocument() {
-    setInterval(() => {
-      const arra = localStorage.getItem('user');
-      const datos = JSON.parse(arra);
-      for (let index = 0; index < datos.Documents.length; index++) {
-        if ('ine' === datos.Documents[index].Name.substring(13)) {
-          this.documents[0].exist = true;
-          this.documents[0].id = datos.Documents[index].ID;
-        } else if ('comprobantEstudio' === datos.Documents[index].Name.substring(13)) {
-          this.documents[1].exist = true;
-          this.documents[1].id = datos.Documents[index].ID;
-        } else if ('domicilioAval' === datos.Documents[index].Name.substring(13)) {
-          this.documents[2].exist = true;
-          this.documents[2].id = datos.Documents[index].ID;
-        } else if ('ineAval' === datos.Documents[index].Name.substring(13)) {
-          this.documents[3].exist = true;
-          this.documents[3].id = datos.Documents[index].ID;
-        }
+    this.documents = [
+      { id: null, exist: false, img : null},
+      { id: null, exist: false, img: null },
+      { id: null, exist: false, img: null },
+      { id: null, exist: false, img: null },
+    ];
+    const arra = localStorage.getItem('user');
+    const datos = JSON.parse(arra).Documents;
+    for (let d of datos) {
+      if ('ine' === d.Name.substring(13)) {
+        console.log(d.Name);
+        this.documents[0].exist = true;
+        this.documents[0].id = d.ID;
+        this.documents[0].img = d.URL;
+      } else if ('comprobantEstudio' === d.Name.substring(13)) {
+        console.log(d.Name);
+        this.documents[1].exist = true;
+        this.documents[1].id = d.ID;
+        this.documents[1].img = d.URL;
+      } else if ('domicilioAval' === d.Name.substring(13)) {
+        console.log(d.Name);
+        this.documents[2].exist = true;
+        this.documents[2].id = d.ID;
+        this.documents[2].img = d.URL;
+      } else if ('ineAval' === d.Name.substring(13)) {
+        console.log(d.Name);
+        this.documents[3].exist = true;
+        this.documents[3].id = d.ID;
+        this.documents[3].img = d.URL;
       }
-    }, 1500);
-
+    }
   }
 
   logOut() {

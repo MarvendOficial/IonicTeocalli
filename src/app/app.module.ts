@@ -9,6 +9,7 @@ import { AuthInterceptor } from '../interceptor/auth.interceptor';
 import {FilePath} from '@ionic-native/file-path/ngx';
 import {FileChooser} from '@ionic-native/file-chooser/ngx';
 import {Base64} from '@ionic-native/base64/ngx';
+import {DatePipe} from '@angular/common';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,7 +19,8 @@ import {Base64} from '@ionic-native/base64/ngx';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     Base64,
     FilePath,
-    FileChooser
+    FileChooser,
+    DatePipe
   ],
   bootstrap: [AppComponent],
 })
